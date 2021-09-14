@@ -1,0 +1,39 @@
+org 100h
+.model small
+.data 
+
+msg db "Couple$" 
+msg2 db "Not Couple$"  
+
+newline db "",0ah,0dh,'$'
+.code
+
+mov ah,1
+int 21h
+mov bl,al ;input one
+
+mov ah,1
+int 21h
+mov cl,al ;input two 
+
+lea dx,newline
+mov ah,9
+int 21h ;newline
+
+cmp bl,cl
+jne Couple
+
+lea dx,msg2
+mov ah,9
+int 21h
+
+jmp exit
+
+Couple:
+lea dx,msg
+mov ah,9
+int 21h
+
+exit:
+
+ret  

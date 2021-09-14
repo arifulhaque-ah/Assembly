@@ -1,0 +1,38 @@
+org 100h
+.model small
+.data 
+
+msg db "Enter the number: ",'$'
+msg2 db 0ah,0dh,"Ans: Even$"
+msg3 db 0ah,0dh,"Ans: Odd$"
+
+.code
+
+lea dx,msg
+mov ah,9
+int 21h ;print msg
+
+mov ah,1
+int 21h ;input1
+
+mov bl,2
+div bl
+
+cmp ah,0
+jne odd
+
+lea dx,msg2
+mov ah,9
+int 21h ;print msg2
+
+jmp exit
+
+odd:
+
+lea dx,msg3
+mov ah,9
+int 21h ;print msg3
+
+exit:
+
+ret

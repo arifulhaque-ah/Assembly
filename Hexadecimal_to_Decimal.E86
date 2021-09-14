@@ -1,0 +1,13 @@
+org 100h
+.model small
+.data 
+
+sg db 3 dup('a')
+msg2 db "Ok$" 
+.code
+
+lea dx,sg
+mov ah,9
+int 21h ;newline
+
+ret  

@@ -1,0 +1,48 @@
+org 100h
+.model small
+.data 
+
+msg db "Enter the first number: ",'$'
+msg2 db "Enter the second number: ",'$'
+msg3 db "Ans: $"
+
+newline db "",0ah,0dh,'$'
+
+.code
+
+lea dx,msg
+mov ah,9
+int 21h ;print msg
+
+mov ah,1
+int 21h
+mov bl,al ;input1
+
+lea dx,newline
+mov ah,9
+int 21h ;print newline
+
+lea dx,msg2
+mov ah,9
+int 21h ;print msg2
+
+mov ah,1
+int 21h
+mov cl,al ;input2
+
+add bl,cl
+sub bl,48
+
+lea dx,newline
+mov ah,9
+int 21h ;print newline
+
+lea dx,msg3
+mov ah,9
+int 21h ;print msg3
+
+mov dl,bl
+mov ah,2
+int 21h ;output print
+
+ret
